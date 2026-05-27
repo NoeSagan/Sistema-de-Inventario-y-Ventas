@@ -39,7 +39,9 @@
             lblUltimasVentas = new Label();
             lblOrdenesPendientes = new Label();
             pnlSidebar = new Panel();
+            lblNomUsuario = new Label();
             btnCerrarSesion = new Button();
+            txtUsuarioConectado = new TextBox();
             btnNavDashboard = new Button();
             btnNavUsuarios = new Button();
             btnNavClientes = new Button();
@@ -60,89 +62,101 @@
             // 
             // pnlKpiVentas
             // 
-            pnlKpiVentas.Location = new Point(3, 12);
+            pnlKpiVentas.Location = new Point(2, 10);
+            pnlKpiVentas.Margin = new Padding(2);
             pnlKpiVentas.Name = "pnlKpiVentas";
-            pnlKpiVentas.Size = new Size(308, 195);
+            pnlKpiVentas.Size = new Size(246, 156);
             pnlKpiVentas.TabIndex = 4;
             // 
             // pnlKpiIngresos
             // 
-            pnlKpiIngresos.Location = new Point(328, 12);
+            pnlKpiIngresos.Location = new Point(262, 10);
+            pnlKpiIngresos.Margin = new Padding(2);
             pnlKpiIngresos.Name = "pnlKpiIngresos";
-            pnlKpiIngresos.Size = new Size(308, 195);
+            pnlKpiIngresos.Size = new Size(246, 156);
             pnlKpiIngresos.TabIndex = 5;
             // 
             // pnlKpiProductos
             // 
-            pnlKpiProductos.Location = new Point(653, 12);
+            pnlKpiProductos.Location = new Point(522, 10);
+            pnlKpiProductos.Margin = new Padding(2);
             pnlKpiProductos.Name = "pnlKpiProductos";
-            pnlKpiProductos.Size = new Size(308, 195);
+            pnlKpiProductos.Size = new Size(246, 156);
             pnlKpiProductos.TabIndex = 5;
             // 
             // pnlKpiClientes
             // 
-            pnlKpiClientes.Location = new Point(978, 12);
+            pnlKpiClientes.Location = new Point(782, 10);
+            pnlKpiClientes.Margin = new Padding(2);
             pnlKpiClientes.Name = "pnlKpiClientes";
-            pnlKpiClientes.Size = new Size(308, 195);
+            pnlKpiClientes.Size = new Size(246, 156);
             pnlKpiClientes.TabIndex = 5;
             // 
             // dgvUltimasVentas
             // 
             dgvUltimasVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUltimasVentas.Location = new Point(3, 502);
+            dgvUltimasVentas.Location = new Point(2, 402);
+            dgvUltimasVentas.Margin = new Padding(2);
             dgvUltimasVentas.Name = "dgvUltimasVentas";
             dgvUltimasVentas.RowHeadersWidth = 62;
-            dgvUltimasVentas.Size = new Size(1283, 196);
+            dgvUltimasVentas.Size = new Size(1026, 157);
             dgvUltimasVentas.TabIndex = 6;
             // 
             // dgvAlertasStock
             // 
             dgvAlertasStock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAlertasStock.Location = new Point(3, 243);
+            dgvAlertasStock.Location = new Point(2, 194);
+            dgvAlertasStock.Margin = new Padding(2);
             dgvAlertasStock.Name = "dgvAlertasStock";
             dgvAlertasStock.RowHeadersWidth = 62;
-            dgvAlertasStock.Size = new Size(1283, 197);
+            dgvAlertasStock.Size = new Size(1026, 158);
             dgvAlertasStock.TabIndex = 7;
             // 
             // dgvOrdenesPendientes
             // 
             dgvOrdenesPendientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvOrdenesPendientes.Location = new Point(3, 760);
+            dgvOrdenesPendientes.Location = new Point(2, 608);
+            dgvOrdenesPendientes.Margin = new Padding(2);
             dgvOrdenesPendientes.Name = "dgvOrdenesPendientes";
             dgvOrdenesPendientes.RowHeadersWidth = 62;
-            dgvOrdenesPendientes.Size = new Size(1283, 214);
+            dgvOrdenesPendientes.Size = new Size(1026, 171);
             dgvOrdenesPendientes.TabIndex = 8;
             // 
             // lblAlertasStock
             // 
             lblAlertasStock.AutoSize = true;
-            lblAlertasStock.Location = new Point(3, 215);
+            lblAlertasStock.Location = new Point(2, 172);
+            lblAlertasStock.Margin = new Padding(2, 0, 2, 0);
             lblAlertasStock.Name = "lblAlertasStock";
-            lblAlertasStock.Size = new Size(203, 25);
+            lblAlertasStock.Size = new Size(169, 20);
             lblAlertasStock.TabIndex = 9;
             lblAlertasStock.Text = "Alertas de de stock bajo";
             // 
             // lblUltimasVentas
             // 
             lblUltimasVentas.AutoSize = true;
-            lblUltimasVentas.Location = new Point(3, 474);
+            lblUltimasVentas.Location = new Point(2, 379);
+            lblUltimasVentas.Margin = new Padding(2, 0, 2, 0);
             lblUltimasVentas.Name = "lblUltimasVentas";
-            lblUltimasVentas.Size = new Size(185, 25);
+            lblUltimasVentas.Size = new Size(155, 20);
             lblUltimasVentas.TabIndex = 10;
             lblUltimasVentas.Text = "Últimas ventas del día";
             // 
             // lblOrdenesPendientes
             // 
             lblOrdenesPendientes.AutoSize = true;
-            lblOrdenesPendientes.Location = new Point(3, 733);
+            lblOrdenesPendientes.Location = new Point(2, 586);
+            lblOrdenesPendientes.Margin = new Padding(2, 0, 2, 0);
             lblOrdenesPendientes.Name = "lblOrdenesPendientes";
-            lblOrdenesPendientes.Size = new Size(242, 25);
+            lblOrdenesPendientes.Size = new Size(199, 20);
             lblOrdenesPendientes.TabIndex = 11;
             lblOrdenesPendientes.Text = "Órdenes de compra en curso";
             // 
             // pnlSidebar
             // 
+            pnlSidebar.Controls.Add(lblNomUsuario);
             pnlSidebar.Controls.Add(btnCerrarSesion);
+            pnlSidebar.Controls.Add(txtUsuarioConectado);
             pnlSidebar.Controls.Add(btnNavDashboard);
             pnlSidebar.Controls.Add(btnNavUsuarios);
             pnlSidebar.Controls.Add(btnNavClientes);
@@ -153,27 +167,51 @@
             pnlSidebar.Controls.Add(btnNavProveedores);
             pnlSidebar.Controls.Add(btnNavOrdenes);
             pnlSidebar.Controls.Add(btnNavVentas);
-            pnlSidebar.Location = new Point(5, 21);
+            pnlSidebar.Location = new Point(4, 17);
+            pnlSidebar.Margin = new Padding(2);
             pnlSidebar.Name = "pnlSidebar";
-            pnlSidebar.Size = new Size(300, 977);
+            pnlSidebar.Size = new Size(240, 782);
             pnlSidebar.TabIndex = 12;
+            // 
+            // lblNomUsuario
+            // 
+            lblNomUsuario.AutoSize = true;
+            lblNomUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblNomUsuario.Location = new Point(42, 714);
+            lblNomUsuario.Margin = new Padding(2, 0, 2, 0);
+            lblNomUsuario.Name = "lblNomUsuario";
+            lblNomUsuario.Size = new Size(160, 20);
+            lblNomUsuario.TabIndex = 14;
+            lblNomUsuario.Text = "Rol de Usuario Actual";
+            lblNomUsuario.Click += lblNomUsuario_Click;
             // 
             // btnCerrarSesion
             // 
-            btnCerrarSesion.Location = new Point(3, 685);
+            btnCerrarSesion.Location = new Point(2, 548);
+            btnCerrarSesion.Margin = new Padding(2);
             btnCerrarSesion.Name = "btnCerrarSesion";
-            btnCerrarSesion.Size = new Size(294, 56);
+            btnCerrarSesion.Size = new Size(235, 45);
             btnCerrarSesion.TabIndex = 13;
             btnCerrarSesion.Tag = "Cerrar Sesión";
             btnCerrarSesion.Text = "Cerrar Sesión";
             btnCerrarSesion.UseVisualStyleBackColor = true;
             btnCerrarSesion.Click += btnCerrarSesion_Click;
             // 
+            // txtUsuarioConectado
+            // 
+            txtUsuarioConectado.BorderStyle = BorderStyle.FixedSingle;
+            txtUsuarioConectado.Location = new Point(7, 736);
+            txtUsuarioConectado.Margin = new Padding(2);
+            txtUsuarioConectado.Name = "txtUsuarioConectado";
+            txtUsuarioConectado.Size = new Size(230, 27);
+            txtUsuarioConectado.TabIndex = 13;
+            // 
             // btnNavDashboard
             // 
-            btnNavDashboard.Location = new Point(3, 3);
+            btnNavDashboard.Location = new Point(2, 2);
+            btnNavDashboard.Margin = new Padding(2);
             btnNavDashboard.Name = "btnNavDashboard";
-            btnNavDashboard.Size = new Size(294, 56);
+            btnNavDashboard.Size = new Size(235, 45);
             btnNavDashboard.TabIndex = 1;
             btnNavDashboard.Tag = "Dashboard";
             btnNavDashboard.Text = "Dashboard";
@@ -182,9 +220,10 @@
             // 
             // btnNavUsuarios
             // 
-            btnNavUsuarios.Location = new Point(3, 561);
+            btnNavUsuarios.Location = new Point(2, 449);
+            btnNavUsuarios.Margin = new Padding(2);
             btnNavUsuarios.Name = "btnNavUsuarios";
-            btnNavUsuarios.Size = new Size(294, 56);
+            btnNavUsuarios.Size = new Size(235, 45);
             btnNavUsuarios.TabIndex = 12;
             btnNavUsuarios.Tag = "Usuarios";
             btnNavUsuarios.Text = "Usuarios";
@@ -193,9 +232,10 @@
             // 
             // btnNavClientes
             // 
-            btnNavClientes.Location = new Point(3, 375);
+            btnNavClientes.Location = new Point(2, 300);
+            btnNavClientes.Margin = new Padding(2);
             btnNavClientes.Name = "btnNavClientes";
-            btnNavClientes.Size = new Size(294, 56);
+            btnNavClientes.Size = new Size(235, 45);
             btnNavClientes.TabIndex = 9;
             btnNavClientes.Tag = "Clientes";
             btnNavClientes.Text = "Clientes";
@@ -204,9 +244,10 @@
             // 
             // btnNavProductos
             // 
-            btnNavProductos.Location = new Point(3, 127);
+            btnNavProductos.Location = new Point(2, 102);
+            btnNavProductos.Margin = new Padding(2);
             btnNavProductos.Name = "btnNavProductos";
-            btnNavProductos.Size = new Size(294, 56);
+            btnNavProductos.Size = new Size(235, 45);
             btnNavProductos.TabIndex = 5;
             btnNavProductos.Tag = "Productos";
             btnNavProductos.Text = "Productos";
@@ -215,9 +256,10 @@
             // 
             // btnNavInventario
             // 
-            btnNavInventario.Location = new Point(3, 189);
+            btnNavInventario.Location = new Point(2, 151);
+            btnNavInventario.Margin = new Padding(2);
             btnNavInventario.Name = "btnNavInventario";
-            btnNavInventario.Size = new Size(294, 56);
+            btnNavInventario.Size = new Size(235, 45);
             btnNavInventario.TabIndex = 6;
             btnNavInventario.Tag = "Inventario";
             btnNavInventario.Text = "Inventario";
@@ -226,9 +268,10 @@
             // 
             // btnNavReportes
             // 
-            btnNavReportes.Location = new Point(3, 499);
+            btnNavReportes.Location = new Point(2, 399);
+            btnNavReportes.Margin = new Padding(2);
             btnNavReportes.Name = "btnNavReportes";
-            btnNavReportes.Size = new Size(294, 56);
+            btnNavReportes.Size = new Size(235, 45);
             btnNavReportes.TabIndex = 11;
             btnNavReportes.Tag = "Reportes";
             btnNavReportes.Text = "Reportes";
@@ -237,9 +280,10 @@
             // 
             // btnNavGarantias
             // 
-            btnNavGarantias.Location = new Point(3, 437);
+            btnNavGarantias.Location = new Point(2, 350);
+            btnNavGarantias.Margin = new Padding(2);
             btnNavGarantias.Name = "btnNavGarantias";
-            btnNavGarantias.Size = new Size(294, 56);
+            btnNavGarantias.Size = new Size(235, 45);
             btnNavGarantias.TabIndex = 10;
             btnNavGarantias.Tag = "Garantías";
             btnNavGarantias.Text = "Garantías";
@@ -248,9 +292,10 @@
             // 
             // btnNavProveedores
             // 
-            btnNavProveedores.Location = new Point(3, 251);
+            btnNavProveedores.Location = new Point(2, 201);
+            btnNavProveedores.Margin = new Padding(2);
             btnNavProveedores.Name = "btnNavProveedores";
-            btnNavProveedores.Size = new Size(294, 56);
+            btnNavProveedores.Size = new Size(235, 45);
             btnNavProveedores.TabIndex = 7;
             btnNavProveedores.Tag = "Proveedores";
             btnNavProveedores.Text = "Proveedores";
@@ -259,9 +304,10 @@
             // 
             // btnNavOrdenes
             // 
-            btnNavOrdenes.Location = new Point(3, 313);
+            btnNavOrdenes.Location = new Point(2, 250);
+            btnNavOrdenes.Margin = new Padding(2);
             btnNavOrdenes.Name = "btnNavOrdenes";
-            btnNavOrdenes.Size = new Size(294, 56);
+            btnNavOrdenes.Size = new Size(235, 45);
             btnNavOrdenes.TabIndex = 8;
             btnNavOrdenes.Tag = "Ordenes";
             btnNavOrdenes.Text = "Ordenes";
@@ -270,9 +316,10 @@
             // 
             // btnNavVentas
             // 
-            btnNavVentas.Location = new Point(3, 65);
+            btnNavVentas.Location = new Point(2, 52);
+            btnNavVentas.Margin = new Padding(2);
             btnNavVentas.Name = "btnNavVentas";
-            btnNavVentas.Size = new Size(294, 56);
+            btnNavVentas.Size = new Size(235, 45);
             btnNavVentas.TabIndex = 4;
             btnNavVentas.Tag = "Ventas";
             btnNavVentas.Text = "Ventas";
@@ -291,18 +338,20 @@
             panel1.Controls.Add(dgvUltimasVentas);
             panel1.Controls.Add(dgvOrdenesPendientes);
             panel1.Controls.Add(dgvAlertasStock);
-            panel1.Location = new Point(308, 21);
+            panel1.Location = new Point(246, 17);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1296, 977);
+            panel1.Size = new Size(1037, 782);
             panel1.TabIndex = 5;
             // 
             // FrmDashboard
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1615, 1010);
+            ClientSize = new Size(1292, 808);
             Controls.Add(panel1);
             Controls.Add(pnlSidebar);
+            Margin = new Padding(2);
             Name = "FrmDashboard";
             Text = "FrmDashboard";
             Load += FrmDashboard_Load_1;
@@ -310,6 +359,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvAlertasStock).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvOrdenesPendientes).EndInit();
             pnlSidebar.ResumeLayout(false);
+            pnlSidebar.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -339,5 +389,7 @@
         private Button btnNavOrdenes;
         private Button btnNavVentas;
         private Panel panel1;
+        private Label lblNomUsuario;
+        private TextBox txtUsuarioConectado;
     }
 }

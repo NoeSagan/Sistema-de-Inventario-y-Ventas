@@ -1,3 +1,4 @@
+using ISW_II_2.Core;
 using Npgsql;
 
 namespace ISW_II_2
@@ -7,7 +8,7 @@ namespace ISW_II_2
         public List<Categoria> ObtenerTodas()
         {
             var lista = new List<Categoria>();
-            using var conn = new NpgsqlConnection(DBConfig.GetConnectionString());
+            using var conn = new NpgsqlConnection(DBConfig.ConnectionString);
             conn.Open();
             using var cmd = new NpgsqlCommand(
                 "SELECT id, nombre FROM categorias ORDER BY nombre", conn);

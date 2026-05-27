@@ -1,3 +1,4 @@
+using ISW_II_2.Core;
 using Npgsql;
 
 namespace ISW_II_2
@@ -7,7 +8,7 @@ namespace ISW_II_2
         public KpiDashboard ObtenerKpis()
         {
             var kpi = new KpiDashboard();
-            using var conn = new NpgsqlConnection(DBConfig.GetConnectionString());
+            using var conn = new NpgsqlConnection(DBConfig.ConnectionString);
             conn.Open();
             using var cmd = new NpgsqlCommand(
                 @"SELECT ventas_hoy, ingresos_hoy, productos_bajo_stock,
@@ -30,7 +31,7 @@ namespace ISW_II_2
         public List<AlertaStock> ObtenerAlertasStock()
         {
             var lista = new List<AlertaStock>();
-            using var conn = new NpgsqlConnection(DBConfig.GetConnectionString());
+            using var conn = new NpgsqlConnection(DBConfig.ConnectionString);
             conn.Open();
             using var cmd = new NpgsqlCommand(
                 "SELECT sku, nombre, marca, categoria, stock_actual, stock_minimo, alerta " +

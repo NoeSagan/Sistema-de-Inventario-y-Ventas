@@ -1,3 +1,4 @@
+using ISW_II_2.Core;
 using Npgsql;
 
 namespace ISW_II_2
@@ -7,7 +8,7 @@ namespace ISW_II_2
         public List<Producto> BuscarProductos(string texto)
         {
             var lista = new List<Producto>();
-            using var conn = new NpgsqlConnection(DBConfig.GetConnectionString());
+            using var conn = new NpgsqlConnection(DBConfig.ConnectionString);
             conn.Open();
 
             var sql = @"SELECT id, sku, nombre, marca, precio_venta, stock_actual
@@ -47,7 +48,7 @@ namespace ISW_II_2
             decimal total    = Math.Max(0, subtotal - descuentoMonto);
             string  numero   = $"V{DateTime.Now:yyyyMMddHHmmss}";
 
-            using var conn = new NpgsqlConnection(DBConfig.GetConnectionString());
+            using var conn = new NpgsqlConnection(DBConfig.ConnectionString);
             conn.Open();
             using var tx = conn.BeginTransaction();
             try
@@ -101,7 +102,7 @@ namespace ISW_II_2
         public List<Venta> ObtenerUltimas(int cantidad = 20)
         {
             var lista = new List<Venta>();
-            using var conn = new NpgsqlConnection(DBConfig.GetConnectionString());
+            using var conn = new NpgsqlConnection(DBConfig.ConnectionString);
             conn.Open();
             using var cmd = new NpgsqlCommand(
                 @"SELECT v.id, v.numero, v.cliente_id, COALESCE(c.nombre,'Consumidor final'),

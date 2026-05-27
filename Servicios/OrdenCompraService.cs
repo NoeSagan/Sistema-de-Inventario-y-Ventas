@@ -1,3 +1,4 @@
+using ISW_II_2.Core;
 using Npgsql;
 
 namespace ISW_II_2
@@ -7,7 +8,7 @@ namespace ISW_II_2
         public List<OrdenCompra> ObtenerTodas()
         {
             var lista = new List<OrdenCompra>();
-            using var conn = new NpgsqlConnection(DBConfig.GetConnectionString());
+            using var conn = new NpgsqlConnection(DBConfig.ConnectionString);
             conn.Open();
             using var cmd = new NpgsqlCommand(
                 @"SELECT oc.id, oc.numero, oc.proveedor_id, p.nombre,
@@ -24,7 +25,7 @@ namespace ISW_II_2
         public List<OrdenCompra> ObtenerPorEstado(string estado)
         {
             var lista = new List<OrdenCompra>();
-            using var conn = new NpgsqlConnection(DBConfig.GetConnectionString());
+            using var conn = new NpgsqlConnection(DBConfig.ConnectionString);
             conn.Open();
             using var cmd = new NpgsqlCommand(
                 @"SELECT oc.id, oc.numero, oc.proveedor_id, p.nombre,
@@ -42,7 +43,7 @@ namespace ISW_II_2
 
         public bool CambiarEstado(int id, string nuevoEstado)
         {
-            using var conn = new NpgsqlConnection(DBConfig.GetConnectionString());
+            using var conn = new NpgsqlConnection(DBConfig.ConnectionString);
             conn.Open();
             using var cmd = new NpgsqlCommand(
                 "UPDATE ordenes_compra SET estado = @estado WHERE id = @id", conn);

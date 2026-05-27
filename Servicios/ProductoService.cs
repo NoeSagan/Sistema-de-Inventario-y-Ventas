@@ -1,3 +1,4 @@
+using ISW_II_2.Core;
 using Npgsql;
 
 namespace ISW_II_2
@@ -9,7 +10,7 @@ namespace ISW_II_2
         public List<Producto> Buscar(string texto, int categoriaId, string estado)
         {
             var lista = new List<Producto>();
-            using var conn = new NpgsqlConnection(DBConfig.GetConnectionString());
+            using var conn = new NpgsqlConnection(DBConfig.ConnectionString);
             conn.Open();
 
             var sql = @"SELECT id, sku, nombre, marca, modelo, descripcion,
@@ -62,7 +63,7 @@ namespace ISW_II_2
 
         public bool CambiarEstado(string sku, string nuevoEstado)
         {
-            using var conn = new NpgsqlConnection(DBConfig.GetConnectionString());
+            using var conn = new NpgsqlConnection(DBConfig.ConnectionString);
             conn.Open();
             using var cmd = new NpgsqlCommand(
                 "UPDATE productos SET estado = @estado WHERE sku = @sku", conn);
@@ -73,7 +74,7 @@ namespace ISW_II_2
 
         public bool Guardar(Producto p, bool esNuevo)
         {
-            using var conn = new NpgsqlConnection(DBConfig.GetConnectionString());
+            using var conn = new NpgsqlConnection(DBConfig.ConnectionString);
             conn.Open();
             var sql = esNuevo
                 ? @"INSERT INTO productos

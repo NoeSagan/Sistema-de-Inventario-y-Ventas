@@ -1,9 +1,10 @@
-﻿using Npgsql;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ISW_II_2.Core;
+using Npgsql;
 
 namespace ISW_II_2
 {
@@ -13,7 +14,7 @@ namespace ISW_II_2
 
         public ResultadoLogin Autenticar(string username, string password)
         {
-            using var conn = new NpgsqlConnection(DBConfig.GetConnectionString());
+            using var conn = new NpgsqlConnection(DBConfig.ConnectionString);
             conn.Open();
 
             using var cmd = new NpgsqlCommand(

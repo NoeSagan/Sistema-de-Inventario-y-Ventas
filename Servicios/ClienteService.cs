@@ -1,3 +1,4 @@
+using ISW_II_2.Core;
 using Npgsql;
 
 namespace ISW_II_2
@@ -7,7 +8,7 @@ namespace ISW_II_2
         public List<Cliente> ObtenerTodos()
         {
             var lista = new List<Cliente>();
-            using var conn = new NpgsqlConnection(DBConfig.GetConnectionString());
+            using var conn = new NpgsqlConnection(DBConfig.ConnectionString);
             conn.Open();
             using var cmd = new NpgsqlCommand(
                 "SELECT id, nombre, cedula_pasaporte, telefono, email, direccion FROM clientes ORDER BY nombre", conn);
@@ -27,7 +28,7 @@ namespace ISW_II_2
 
         public bool Guardar(Cliente c, bool esNuevo)
         {
-            using var conn = new NpgsqlConnection(DBConfig.GetConnectionString());
+            using var conn = new NpgsqlConnection(DBConfig.ConnectionString);
             conn.Open();
             using var cmd = new NpgsqlCommand();
             cmd.Connection = conn;

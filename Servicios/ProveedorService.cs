@@ -1,3 +1,4 @@
+using ISW_II_2.Core;
 using Npgsql;
 
 namespace ISW_II_2
@@ -7,7 +8,7 @@ namespace ISW_II_2
         public List<Proveedor> ObtenerTodos()
         {
             var lista = new List<Proveedor>();
-            using var conn = new NpgsqlConnection(DBConfig.GetConnectionString());
+            using var conn = new NpgsqlConnection(DBConfig.ConnectionString);
             conn.Open();
             using var cmd = new NpgsqlCommand(
                 "SELECT id, rnc, nombre, contacto, telefono, email, direccion, condicion_pago, tiempo_entrega, estado " +
@@ -32,7 +33,7 @@ namespace ISW_II_2
 
         public bool Guardar(Proveedor p, bool esNuevo)
         {
-            using var conn = new NpgsqlConnection(DBConfig.GetConnectionString());
+            using var conn = new NpgsqlConnection(DBConfig.ConnectionString);
             conn.Open();
             var sql = esNuevo
                 ? "INSERT INTO proveedores (rnc,nombre,contacto,telefono,email,direccion,condicion_pago,tiempo_entrega,estado) " +
@@ -57,7 +58,7 @@ namespace ISW_II_2
         public List<OrdenCompra> ObtenerOrdenesPorProveedor(int proveedorId)
         {
             var lista = new List<OrdenCompra>();
-            using var conn = new NpgsqlConnection(DBConfig.GetConnectionString());
+            using var conn = new NpgsqlConnection(DBConfig.ConnectionString);
             conn.Open();
             using var cmd = new NpgsqlCommand(
                 "SELECT oc.id, oc.numero, oc.proveedor_id, p.nombre, oc.fecha_creacion, oc.estado, oc.monto_total " +

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ISW_II_2.Core;
 
 namespace ISW_II_2
 {
@@ -20,6 +21,7 @@ namespace ISW_II_2
             Load += FrmDashboard_Load;
         }
 
+
         private void FrmDashboard_Load(object sender, EventArgs e)
         {
             try
@@ -29,6 +31,9 @@ namespace ISW_II_2
                 CargarAlertasStock();
                 CargarUltimasVentas();
                 CargarOrdenesPendientes();
+
+                // aquí agregage la asignación de rol al Label
+                txtUsuarioConectado.Text = $"ROL: {Sesion.Usuario}";
             }
             catch (Exception ex)
             {
@@ -117,9 +122,11 @@ namespace ISW_II_2
         }
 
         private void FrmDashboard_Load_1(object sender, EventArgs e)
+
         {
 
         }
+
 
         private void btnNavDashboard_Click(object sender, EventArgs e)
         {
@@ -172,6 +179,11 @@ namespace ISW_II_2
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblNomUsuario_Click(object sender, EventArgs e)
         {
 
         }
