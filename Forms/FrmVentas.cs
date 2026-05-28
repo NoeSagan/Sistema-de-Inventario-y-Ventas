@@ -12,15 +12,16 @@ namespace ISW_II_2
 {
     public partial class FrmVentas : Form
     {
-        private readonly VentaService   _ventaSvc   = new VentaService();
+        private readonly VentaService _ventaSvc = new VentaService();
         private readonly ClienteService _clienteSvc = new ClienteService();
-        private readonly List<ItemCarrito> _carrito  = new List<ItemCarrito>();
-        private List<Producto> _productosEnGrid      = new List<Producto>();
+        private readonly List<ItemCarrito> _carrito = new List<ItemCarrito>();
+        private List<Producto> _productosEnGrid = new List<Producto>();
 
         public FrmVentas()
         {
             InitializeComponent();
             Load += FrmVentas_Load;
+            txtUsuarioConectado.Text = $"{Sesion.NombreCompleto}  |  {Sesion.Rol}";
         }
 
         private void FrmVentas_Load(object sender, EventArgs e)
@@ -43,9 +44,9 @@ namespace ISW_II_2
         private void ConfigurarCarrito()
         {
             // El diseñador dejó solo la columna QuitarProducto; se insertan las columnas de datos antes.
-            dgvCarrito.Columns.Insert(0, new DataGridViewTextBoxColumn { Name = "cSKU",      HeaderText = "SKU",      ReadOnly = true });
-            dgvCarrito.Columns.Insert(1, new DataGridViewTextBoxColumn { Name = "cNombre",   HeaderText = "Producto", ReadOnly = true });
-            dgvCarrito.Columns.Insert(2, new DataGridViewTextBoxColumn { Name = "cPrecio",   HeaderText = "Precio",   ReadOnly = true });
+            dgvCarrito.Columns.Insert(0, new DataGridViewTextBoxColumn { Name = "cSKU", HeaderText = "SKU", ReadOnly = true });
+            dgvCarrito.Columns.Insert(1, new DataGridViewTextBoxColumn { Name = "cNombre", HeaderText = "Producto", ReadOnly = true });
+            dgvCarrito.Columns.Insert(2, new DataGridViewTextBoxColumn { Name = "cPrecio", HeaderText = "Precio", ReadOnly = true });
             dgvCarrito.Columns.Insert(3, new DataGridViewTextBoxColumn { Name = "cCantidad", HeaderText = "Cantidad", ReadOnly = true });
             dgvCarrito.Columns.Insert(4, new DataGridViewTextBoxColumn { Name = "cSubtotal", HeaderText = "Subtotal", ReadOnly = true });
         }
@@ -57,7 +58,7 @@ namespace ISW_II_2
             foreach (var c in _clienteSvc.ObtenerTodos())
                 cmbCliente.Items.Add(new ComboItem(c.Id, c.Nombre));
             cmbCliente.DisplayMember = "Nombre";
-            cmbCliente.ValueMember   = "Id";
+            cmbCliente.ValueMember = "Id";
             if (cmbCliente.Items.Count > 0)
                 cmbCliente.SelectedIndex = 0;
         }
@@ -72,13 +73,13 @@ namespace ISW_II_2
 
         private void WirarEventos()
         {
-            btnBuscar.Click         += (s, e) => CargarProductos(txtBuscarProducto.Text.Trim());
+            btnBuscar.Click += (s, e) => CargarProductos(txtBuscarProducto.Text.Trim());
             btnAgregarCarrito.Click += BtnAgregarCarrito_Click;
-            btnQuitarItem.Click     += BtnQuitarItem_Click;
-            button3.Click           += BtnCancelarVenta_Click;
-            button5.Click           += BtnProcesarVenta_Click;
-            dgvProductos.CellClick  += DgvProductos_CellClick;
-            dgvCarrito.CellClick    += DgvCarrito_CellClick;
+            btnQuitarItem.Click += BtnQuitarItem_Click;
+            button3.Click += BtnCancelarVenta_Click;
+            button5.Click += BtnProcesarVenta_Click;
+            dgvProductos.CellClick += DgvProductos_CellClick;
+            dgvCarrito.CellClick += DgvCarrito_CellClick;
         }
 
         private void BtnAgregarCarrito_Click(object sender, EventArgs e)
@@ -99,7 +100,7 @@ namespace ISW_II_2
             if (rowIndex < 0 || rowIndex >= _productosEnGrid.Count) return;
 
             var producto = _productosEnGrid[rowIndex];
-            int stock    = producto.StockActual;
+            int stock = producto.StockActual;
             int cantidad = (int)nudCantidad.Value;
 
             if (cantidad > stock)
@@ -124,12 +125,12 @@ namespace ISW_II_2
             {
                 _carrito.Add(new ItemCarrito
                 {
-                    ProductoId     = producto.Id,
-                    SKU            = producto.SKU,
-                    Nombre         = producto.Nombre,
-                    Marca          = producto.Marca,
+                    ProductoId = producto.Id,
+                    SKU = producto.SKU,
+                    Nombre = producto.Nombre,
+                    Marca = producto.Marca,
                     PrecioUnitario = producto.PrecioVenta,
-                    Cantidad       = cantidad
+                    Cantidad = cantidad
                 });
             }
             RefrescarCarrito();
@@ -189,7 +190,7 @@ namespace ISW_II_2
                 return;
             }
 
-            int    clienteId  = (cmbCliente.SelectedItem is ComboItem ci) ? ci.Id : 0;
+            int clienteId = (cmbCliente.SelectedItem is ComboItem ci) ? ci.Id : 0;
             string metodoPago = cmbMetodoPago.SelectedItem?.ToString() ?? "";
 
             try
@@ -216,13 +217,9 @@ namespace ISW_II_2
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
         private class ComboItem
         {
-            public int    Id     { get; }
+            public int Id { get; }
             public string Nombre { get; }
             public ComboItem(int id, string nombre) { Id = id; Nombre = nombre; }
             public override string ToString() => Nombre;

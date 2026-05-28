@@ -1,11 +1,26 @@
 namespace ISW_II_2
 {
+    // ✅ Sesion ahora vive en el mismo archivo
+    internal static class Sesion
+    {
+        public static int UsuarioId { get; set; }
+        public static string NombreCompleto { get; set; } = "";
+        public static string Rol { get; set; } = "";
+        public static string Usuario => NombreCompleto;
+
+        public static void Limpiar()
+        {
+            UsuarioId = 0;
+            NombreCompleto = "";
+            Rol = "";
+        }
+    }
+
     internal class ClaSideBar
     {
         private readonly Panel _panel;
-        private readonly Form  _parent;
+        private readonly Form _parent;
 
-        // Módulos accesibles por rol
         private static readonly Dictionary<string, HashSet<string>> _permisos = new()
         {
             ["Administrador"] = new HashSet<string>
@@ -27,13 +42,13 @@ namespace ISW_II_2
 
         public ClaSideBar(Panel pnlSidebar, Form parent)
         {
-            _panel  = pnlSidebar;
+            _panel = pnlSidebar;
             _parent = parent;
         }
 
         public void Configurar()
         {
-            string rol     = Sesion.Rol;
+            string rol = Sesion.Rol;
             var modulosRol = _permisos.TryGetValue(rol, out var perms)
                              ? perms
                              : new HashSet<string>();
@@ -47,7 +62,7 @@ namespace ISW_II_2
                 if (tag == "Cerrar Sesión")
                 {
                     btn.Visible = true;
-                    btn.Click  += BtnCerrarSesion_Click;
+                    btn.Click += BtnCerrarSesion_Click;
                     continue;
                 }
 
@@ -64,22 +79,21 @@ namespace ISW_II_2
 
         private void Navegar(string modulo)
         {
-            // Evitar recrear el mismo formulario
             if (_parent.GetType().Name == NombreFormulario(modulo)) return;
 
             Form destino = modulo switch
             {
-                "Dashboard"   => new FrmDashboard(),
-                "Ventas"      => new FrmVentas(),
-                "Productos"   => new FrmProductos(),
-                "Inventario"  => new FrmInventario(),
+                "Dashboard" => new FrmDashboard(),
+                "Ventas" => new FrmVentas(),
+                "Productos" => new FrmProductos(),
+                "Inventario" => new FrmInventario(),
                 "Proveedores" => new FrmProveedores(),
-                "Ordenes"     => new FrmOrdenesCompra(),
-                "Clientes"    => new FrmClientes(),
-                "Garantias"   => new FrmGarantias(),
-                "Reportes"    => new FrmReportes(),
-                "Usuarios"    => MensajeEnDesarrollo(),
-                _             => MensajeEnDesarrollo()
+                "Ordenes" => new FrmOrdenesCompra(),
+                "Clientes" => new FrmClientes(),
+                "Garantias" => new FrmGarantias(),
+                "Reportes" => new FrmReportes(),
+                "Usuarios" => MensajeEnDesarrollo(),
+                _ => MensajeEnDesarrollo()
             };
 
             if (destino is _PlaceholderForm)
@@ -111,36 +125,34 @@ namespace ISW_II_2
             _parent.Close();
         }
 
-        // Devuelve el nombre de clase esperado para cada módulo
         private static string NombreFormulario(string modulo) => modulo switch
         {
-            "Dashboard"   => "FrmDashboard",
-            "Ventas"      => "FrmVentas",
-            "Productos"   => "FrmProductos",
-            "Inventario"  => "FrmInventario",
+            "Dashboard" => "FrmDashboard",
+            "Ventas" => "FrmVentas",
+            "Productos" => "FrmProductos",
+            "Inventario" => "FrmInventario",
             "Proveedores" => "FrmProveedores",
-            "Ordenes"     => "FrmOrdenesCompra",
-            "Clientes"    => "FrmClientes",
-            "Garantias"   => "FrmGarantias",
-            "Reportes"    => "FrmReportes",
-            _             => ""
+            "Ordenes" => "FrmOrdenesCompra",
+            "Clientes" => "FrmClientes",
+            "Garantias" => "FrmGarantias",
+            "Reportes" => "FrmReportes",
+            _ => ""
         };
 
-        // Normaliza el Tag del diseñador a clave interna del diccionario de permisos
         private static string NormalizarTag(string tag) => tag switch
         {
-            "Dashboard"   => "Dashboard",
-            "Ventas"      => "Ventas",
-            "Productos"   => "Productos",
-            "Inventario"  => "Inventario",
+            "Dashboard" => "Dashboard",
+            "Ventas" => "Ventas",
+            "Productos" => "Productos",
+            "Inventario" => "Inventario",
             "Proveedores" => "Proveedores",
-            "Ordenes"     => "Ordenes",
-            "Clientes"    => "Clientes",
-            "Garantías"   => "Garantias",
-            "Garantias"   => "Garantias",
-            "Reportes"    => "Reportes",
-            "Usuarios"    => "Usuarios",
-            _             => tag
+            "Ordenes" => "Ordenes",
+            "Clientes" => "Clientes",
+            "Garantías" => "Garantias",
+            "Garantias" => "Garantias",
+            "Reportes" => "Reportes",
+            "Usuarios" => "Usuarios",
+            _ => tag
         };
 
         private static Form MensajeEnDesarrollo()
@@ -150,7 +162,6 @@ namespace ISW_II_2
             return new _PlaceholderForm();
         }
 
-        // Formulario marcador para el patrón de módulo en desarrollo
         private class _PlaceholderForm : Form { }
     }
 }

@@ -16,6 +16,7 @@ namespace ISW_II_2
         {
             InitializeComponent();
             Load += FrmInventario_Load;
+            txtUsuarioConectado.Text = $"{Sesion.NombreCompleto}  |  {Sesion.Rol}";
         }
 
         private void FrmInventario_Load(object sender, EventArgs e)

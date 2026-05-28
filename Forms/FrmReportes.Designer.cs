@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             pnlSidebar = new Panel();
+            lblNomUsuario = new Label();
+            txtUsuarioConectado = new TextBox();
             btnCerrarSesion = new Button();
             btnNavDashboard = new Button();
             btnNavUsuarios = new Button();
@@ -45,6 +47,8 @@
             // 
             // pnlSidebar
             // 
+            pnlSidebar.Controls.Add(lblNomUsuario);
+            pnlSidebar.Controls.Add(txtUsuarioConectado);
             pnlSidebar.Controls.Add(btnCerrarSesion);
             pnlSidebar.Controls.Add(btnNavDashboard);
             pnlSidebar.Controls.Add(btnNavUsuarios);
@@ -60,6 +64,26 @@
             pnlSidebar.Name = "pnlSidebar";
             pnlSidebar.Size = new Size(300, 977);
             pnlSidebar.TabIndex = 20;
+            // 
+            // lblNomUsuario
+            // 
+            lblNomUsuario.AutoSize = true;
+            lblNomUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblNomUsuario.Location = new Point(49, 910);
+            lblNomUsuario.Margin = new Padding(2, 0, 2, 0);
+            lblNomUsuario.Name = "lblNomUsuario";
+            lblNomUsuario.Size = new Size(196, 25);
+            lblNomUsuario.TabIndex = 22;
+            lblNomUsuario.Text = "Rol de Usuario Actual";
+            // 
+            // txtUsuarioConectado
+            // 
+            txtUsuarioConectado.BorderStyle = BorderStyle.FixedSingle;
+            txtUsuarioConectado.Location = new Point(6, 938);
+            txtUsuarioConectado.Margin = new Padding(2);
+            txtUsuarioConectado.Name = "txtUsuarioConectado";
+            txtUsuarioConectado.Size = new Size(287, 31);
+            txtUsuarioConectado.TabIndex = 21;
             // 
             // btnCerrarSesion
             // 
@@ -180,6 +204,7 @@
             Name = "FrmReportes";
             Text = "FrmReportes";
             pnlSidebar.ResumeLayout(false);
+            pnlSidebar.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -197,5 +222,7 @@
         private Button btnNavProveedores;
         private Button btnNavOrdenes;
         private Button btnNavVentas;
+        private Label lblNomUsuario;
+        private TextBox txtUsuarioConectado;
     }
 }

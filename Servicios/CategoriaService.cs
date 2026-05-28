@@ -1,4 +1,4 @@
-using ISW_II_2.Core;
+using ISW_II_2;
 using Npgsql;
 
 namespace ISW_II_2

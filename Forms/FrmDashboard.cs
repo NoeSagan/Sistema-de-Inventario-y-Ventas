@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ISW_II_2.Core;
+using ISW_II_2;
 
 namespace ISW_II_2
 {
@@ -115,75 +115,13 @@ namespace ISW_II_2
             dgvOrdenesPendientes.Rows.Clear();
             foreach (var o in ordenes)
                 dgvOrdenesPendientes.Rows.Add(
-                    o.Id, o.ProveedorNombre,
-                    o.FechaCreacion.ToString("dd/MM/yyyy"),
-                    o.Estado,
-                    o.MontoTotal.ToString("C"));
+                o.Id, o.ProveedorNombre,
+                o.FechaCreacion.ToString("dd/MM/yyyy"),
+                o.Estado,
+                o.MontoTotal.ToString("C"));
         }
 
-        private void FrmDashboard_Load_1(object sender, EventArgs e)
-
-        {
-
-        }
-
-
-        private void btnNavDashboard_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnNavVentas_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnNavProductos_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnNavInventario_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnNavProveedores_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnNavOrdenes_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnNavClientes_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnNavGarantias_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnNavReportes_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnNavUsuarios_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCerrarSesion_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblNomUsuario_Click(object sender, EventArgs e)
+        private void txtUsuarioConectado_TextChanged(object sender, EventArgs e)
         {
 
         }

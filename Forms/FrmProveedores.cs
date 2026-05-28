@@ -13,12 +13,13 @@ namespace ISW_II_2
     public partial class FrmProveedores : Form
     {
         private readonly ProveedorService _svc = new ProveedorService();
-        private List<Proveedor> _proveedores   = new List<Proveedor>();
+        private List<Proveedor> _proveedores = new List<Proveedor>();
 
         public FrmProveedores()
         {
             InitializeComponent();
             Load += FrmProveedores_Load;
+            txtUsuarioConectado.Text = $"{Sesion.NombreCompleto}  |  {Sesion.Rol}";
         }
 
         private void FrmProveedores_Load(object sender, EventArgs e)
@@ -112,11 +113,11 @@ namespace ISW_II_2
             }
             try
             {
-                var ordenes    = _svc.ObtenerOrdenesPorProveedor(p.Id);
-                int total      = ordenes.Count;
-                int recibidas  = ordenes.Count(o => o.Estado == "Recibida");
+                var ordenes = _svc.ObtenerOrdenesPorProveedor(p.Id);
+                int total = ordenes.Count;
+                int recibidas = ordenes.Count(o => o.Estado == "Recibida");
                 int canceladas = ordenes.Count(o => o.Estado == "Cancelada");
-                decimal monto  = ordenes.Where(o => o.Estado == "Recibida").Sum(o => o.MontoTotal);
+                decimal monto = ordenes.Where(o => o.Estado == "Recibida").Sum(o => o.MontoTotal);
 
                 MessageBox.Show(
                     $"Desempeño de {p.Nombre}\n\n" +

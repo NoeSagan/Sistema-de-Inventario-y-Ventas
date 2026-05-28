@@ -16,6 +16,7 @@ namespace ISW_II_2
         {
             InitializeComponent();
             Load += FrmGarantias_Load;
+            txtUsuarioConectado.Text = $"{Sesion.NombreCompleto}  |  {Sesion.Rol}";
         }
 
         private void FrmGarantias_Load(object sender, EventArgs e)

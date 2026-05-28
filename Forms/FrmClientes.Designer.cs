@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             pnlSidebar = new Panel();
+            lblNomUsuario = new Label();
+            txtUsuarioConectado = new TextBox();
             btnCerrarSesion = new Button();
             btnNavDashboard = new Button();
             btnNavUsuarios = new Button();
@@ -59,6 +61,8 @@
             // 
             // pnlSidebar
             // 
+            pnlSidebar.Controls.Add(lblNomUsuario);
+            pnlSidebar.Controls.Add(txtUsuarioConectado);
             pnlSidebar.Controls.Add(btnCerrarSesion);
             pnlSidebar.Controls.Add(btnNavDashboard);
             pnlSidebar.Controls.Add(btnNavUsuarios);
@@ -74,7 +78,26 @@
             pnlSidebar.Name = "pnlSidebar";
             pnlSidebar.Size = new Size(300, 977);
             pnlSidebar.TabIndex = 15;
-            pnlSidebar.Paint += pnlSidebar_Paint;
+            // 
+            // lblNomUsuario
+            // 
+            lblNomUsuario.AutoSize = true;
+            lblNomUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblNomUsuario.Location = new Point(50, 907);
+            lblNomUsuario.Margin = new Padding(2, 0, 2, 0);
+            lblNomUsuario.Name = "lblNomUsuario";
+            lblNomUsuario.Size = new Size(196, 25);
+            lblNomUsuario.TabIndex = 16;
+            lblNomUsuario.Text = "Rol de Usuario Actual";
+            // 
+            // txtUsuarioConectado
+            // 
+            txtUsuarioConectado.BorderStyle = BorderStyle.FixedSingle;
+            txtUsuarioConectado.Location = new Point(7, 935);
+            txtUsuarioConectado.Margin = new Padding(2);
+            txtUsuarioConectado.Name = "txtUsuarioConectado";
+            txtUsuarioConectado.Size = new Size(287, 31);
+            txtUsuarioConectado.TabIndex = 15;
             // 
             // btnCerrarSesion
             // 
@@ -300,6 +323,7 @@
             Name = "FrmClientes";
             Text = "FrmClientes";
             pnlSidebar.ResumeLayout(false);
+            pnlSidebar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -332,5 +356,7 @@
         private DataGridViewTextBoxColumn Direccion;
         private DataGridViewTextBoxColumn ultimaCompra;
         private DataGridViewTextBoxColumn TotalGastado;
+        private Label lblNomUsuario;
+        private TextBox txtUsuarioConectado;
     }
 }

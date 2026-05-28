@@ -50,6 +50,8 @@
             QuitarProducto = new DataGridViewButtonColumn();
             cmbCliente = new ComboBox();
             pnlSidebar = new Panel();
+            lblNomUsuario = new Label();
+            txtUsuarioConectado = new TextBox();
             btnCerrarSesion = new Button();
             btnNavDashboard = new Button();
             btnNavUsuarios = new Button();
@@ -81,7 +83,6 @@
             pnlBusqueda.Name = "pnlBusqueda";
             pnlBusqueda.Size = new Size(1267, 492);
             pnlBusqueda.TabIndex = 0;
-            pnlBusqueda.Paint += panel1_Paint;
             // 
             // lblCantidad
             // 
@@ -254,6 +255,8 @@
             // 
             // pnlSidebar
             // 
+            pnlSidebar.Controls.Add(lblNomUsuario);
+            pnlSidebar.Controls.Add(txtUsuarioConectado);
             pnlSidebar.Controls.Add(btnCerrarSesion);
             pnlSidebar.Controls.Add(btnNavDashboard);
             pnlSidebar.Controls.Add(btnNavUsuarios);
@@ -269,6 +272,26 @@
             pnlSidebar.Name = "pnlSidebar";
             pnlSidebar.Size = new Size(300, 977);
             pnlSidebar.TabIndex = 14;
+            // 
+            // lblNomUsuario
+            // 
+            lblNomUsuario.AutoSize = true;
+            lblNomUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblNomUsuario.Location = new Point(50, 912);
+            lblNomUsuario.Margin = new Padding(2, 0, 2, 0);
+            lblNomUsuario.Name = "lblNomUsuario";
+            lblNomUsuario.Size = new Size(196, 25);
+            lblNomUsuario.TabIndex = 16;
+            lblNomUsuario.Text = "Rol de Usuario Actual";
+            // 
+            // txtUsuarioConectado
+            // 
+            txtUsuarioConectado.BorderStyle = BorderStyle.FixedSingle;
+            txtUsuarioConectado.Location = new Point(7, 940);
+            txtUsuarioConectado.Margin = new Padding(2);
+            txtUsuarioConectado.Name = "txtUsuarioConectado";
+            txtUsuarioConectado.Size = new Size(287, 31);
+            txtUsuarioConectado.TabIndex = 15;
             // 
             // btnCerrarSesion
             // 
@@ -397,6 +420,7 @@
             pnlCarrito.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvCarrito).EndInit();
             pnlSidebar.ResumeLayout(false);
+            pnlSidebar.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -435,5 +459,7 @@
         private Button btnNavProveedores;
         private Button btnNavOrdenes;
         private Button btnNavVentas;
+        private Label lblNomUsuario;
+        private TextBox txtUsuarioConectado;
     }
 }

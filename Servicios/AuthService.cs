@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ISW_II_2.Core;
-using Npgsql;
 
 namespace ISW_II_2
 {
@@ -14,15 +13,14 @@ namespace ISW_II_2
 
         public ResultadoLogin Autenticar(string username, string password)
         {
-            using var conn = new NpgsqlConnection(DBConfig.ConnectionString);
+            using var conn = new NpgsqlConnection(DBConfig.GetConnectionString());
             conn.Open();
-
             using var cmd = new NpgsqlCommand(
                 "SELECT id, nombre_completo, rol, estado, intentos_fallidos FROM usuarios WHERE username = @u", conn);
             cmd.Parameters.AddWithValue("@u", username);
-
             using var reader = cmd.ExecuteReader();
-            if (!reader.Read()) return new ResultadoLogin { Exitoso = false, Mensaje = "Usuario o contraseña incorrectos." };
+            if (!reader.Read())
+                return new ResultadoLogin { Exitoso = false, Mensaje = "Usuario o contraseña incorrectos." };
 
             int id = reader.GetInt32(0);
             string nombre = reader.GetString(1);
@@ -42,13 +40,28 @@ namespace ISW_II_2
 
             if (valida)
             {
-                new NpgsqlCommand($"UPDATE usuarios SET intentos_fallidos=0, ultimo_acceso=NOW() WHERE id={id}", conn).ExecuteNonQuery();
+                using var cmdOk = new NpgsqlCommand(
+                    "UPDATE usuarios SET intentos_fallidos = @intentos, ultimo_acceso = NOW() WHERE id = @id", conn);
+                cmdOk.Parameters.AddWithValue("@intentos", 0);
+                cmdOk.Parameters.AddWithValue("@id", id);
+                cmdOk.ExecuteNonQuery();
+
+                Sesion.UsuarioId = id;
+                Sesion.NombreCompleto = nombre;
+                Sesion.Rol = rol;
+
                 return new ResultadoLogin { Exitoso = true, UsuarioId = id, NombreCompleto = nombre, Rol = rol };
             }
 
             intentos++;
             string nuevoEstado = intentos >= MAX_INTENTOS ? "Bloqueado" : "Activo";
-            new NpgsqlCommand($"UPDATE usuarios SET intentos_fallidos={intentos}, estado='{nuevoEstado}' WHERE id={id}", conn).ExecuteNonQuery();
+
+            using var cmdFail = new NpgsqlCommand(
+                "UPDATE usuarios SET intentos_fallidos = @intentos, estado = @estado WHERE id = @id", conn);
+            cmdFail.Parameters.AddWithValue("@intentos", intentos);
+            cmdFail.Parameters.AddWithValue("@estado", nuevoEstado);
+            cmdFail.Parameters.AddWithValue("@id", id);
+            cmdFail.ExecuteNonQuery();
 
             string msg = intentos >= MAX_INTENTOS
                 ? "Cuenta bloqueada por demasiados intentos."
@@ -60,10 +73,10 @@ namespace ISW_II_2
 
     internal class ResultadoLogin
     {
-        public bool    Exitoso        { get; set; }
-        public int     UsuarioId      { get; set; }
+        public bool Exitoso { get; set; }
+        public int UsuarioId { get; set; }
         public string? NombreCompleto { get; set; }
-        public string? Rol            { get; set; }
-        public string? Mensaje        { get; set; }
+        public string? Rol { get; set; }
+        public string? Mensaje { get; set; }
     }
 }

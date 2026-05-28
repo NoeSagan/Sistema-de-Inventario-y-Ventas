@@ -19,6 +19,7 @@ namespace ISW_II_2
         {
             InitializeComponent();
             Load += FrmOrdenesCompra_Load;
+            txtUsuarioConectado.Text = $"{Sesion.NombreCompleto}  |  {Sesion.Rol}";
         }
 
         private void FrmOrdenesCompra_Load(object sender, EventArgs e)
@@ -48,11 +49,11 @@ namespace ISW_II_2
                 AllowUserToAddRows = false,
                 ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
             };
-            dgvOrdenes.Columns.Add("gId",        "#");
+            dgvOrdenes.Columns.Add("gId", "#");
             dgvOrdenes.Columns.Add("gProveedor", "Proveedor");
-            dgvOrdenes.Columns.Add("gFecha",     "Fecha");
-            dgvOrdenes.Columns.Add("gEstado",    "Estado");
-            dgvOrdenes.Columns.Add("gTotal",     "Total");
+            dgvOrdenes.Columns.Add("gFecha", "Fecha");
+            dgvOrdenes.Columns.Add("gEstado", "Estado");
+            dgvOrdenes.Columns.Add("gTotal", "Total");
             Controls.Add(dgvOrdenes);
         }
 
@@ -65,10 +66,10 @@ namespace ISW_II_2
 
         private void WirarEventos()
         {
-            btnNuevaOrden.Click      += BtnNuevaOrden_Click;
+            btnNuevaOrden.Click += BtnNuevaOrden_Click;
             btnVerDetalleOrden.Click += BtnVerDetalle_Click;
-            btnMarcarRecibida.Click  += BtnMarcarRecibida_Click;
-            btnCancelarOrden.Click   += BtnCancelarOrden_Click;
+            btnMarcarRecibida.Click += BtnMarcarRecibida_Click;
+            btnCancelarOrden.Click += BtnCancelarOrden_Click;
             comboBox1.SelectedIndexChanged += (s, ev) => CargarOrdenes();
         }
 

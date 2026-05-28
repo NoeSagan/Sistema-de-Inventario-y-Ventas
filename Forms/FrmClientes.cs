@@ -18,6 +18,7 @@ namespace ISW_II_2
         {
             InitializeComponent();
             Load += FrmClientes_Load;
+            txtUsuarioConectado.Text = $"{Sesion.NombreCompleto}  |  {Sesion.Rol}";
         }
 
         private void FrmClientes_Load(object sender, EventArgs e)
@@ -31,11 +32,6 @@ namespace ISW_II_2
                 MessageBox.Show($"Error al cargar: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void pnlSidebar_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
