@@ -1,6 +1,3 @@
-# Credenciales — nunca subir
-Core/DBConfig.cs
-
 # Build
 bin/
 obj/
